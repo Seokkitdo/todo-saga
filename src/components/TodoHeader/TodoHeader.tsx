@@ -1,16 +1,20 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { addTodo } from 'store/actions';
 
 const TodoHeader: React.FC = () => {
+  const dispatch = useDispatch();
   const [todoInput, setTodoInput] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(todoInput);
     setTodoInput(e.target.value);
   };
 
   const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
+    dispatch(addTodo(todoInput));
   };
 
   return (
@@ -72,6 +76,7 @@ const TodoCreateBtn = styled.button`
   border-radius: 5px;
   background-color: #e1b382;
   padding: 0.7rem 1.1rem;
+  cursor: pointer;
   border: none;
 `;
 
