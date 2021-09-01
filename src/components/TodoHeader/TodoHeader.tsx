@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { addTodo } from 'store/actions';
 
@@ -10,11 +10,23 @@ const TodoHeader: React.FC = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTodoInput(e.target.value);
+    // if (e.keyCode === 13) {
+    //   handleSubmit(e);
+    // }
   };
 
   const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (todoInput.length === 0 && todoInput.trim().length === 0) {
+      alert('할 일을 입력해주세요');
+      return;
+    }
     dispatch(addTodo(todoInput));
+    resetInput();
+  };
+
+  const resetInput = () => {
+    setTodoInput('');
   };
 
   return (

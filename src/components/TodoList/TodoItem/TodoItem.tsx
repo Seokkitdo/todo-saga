@@ -1,14 +1,25 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import styled from 'styled-components';
 import { faCheck, faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import styled from 'styled-components';
+import { ITodo } from 'types';
+import { removeTodo } from 'store/actions';
 
-const TodoItem: React.FC = () => {
-  const todoText = '오늘은 할 일이 많네요~';
+interface ITodoProps {
+  todo: ITodo;
+}
+
+const TodoItem: React.FC<ITodoProps> = ({ todo }) => {
+  const dispatch = useDispatch();
+
+  const removeHandler = () => {
+    dispatch(removeTodo(todo.id));
+  };
   return (
     <TodoItemWrap>
-      <TodoText>{todoText}</TodoText>
+      <TodoText>{todo.text}</TodoText>
       <TodoButtons>
         <TodoButton>
           <FontAwesomeIcon icon={faCheck} />
@@ -16,7 +27,7 @@ const TodoItem: React.FC = () => {
         <TodoButton>
           <FontAwesomeIcon icon={faEdit} />
         </TodoButton>
-        <TodoButton>
+        <TodoButton onClick={removeHandler}>
           <FontAwesomeIcon icon={faTrashAlt} />
         </TodoButton>
       </TodoButtons>

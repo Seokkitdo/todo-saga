@@ -15,13 +15,13 @@ export const removeTodo = (id: number) => ({
   },
 });
 
-export const addTodoAsync = () => ({
-  type: TodoActionTypes.ADD_TODO_ASYNC,
-});
+// export const addTodoAsync = () => ({
+//   type: TodoActionTypes.ADD_TODO_ASYNC,
+// });
 
-export const removeTodoAsync = () => ({
-  type: TodoActionTypes.REMOVE_TODO_ASYNC,
-});
+// export const removeTodoAsync = () => ({
+//   type: TodoActionTypes.REMOVE_TODO_ASYNC,
+// });
 
 export const loadRequest = () => ({
   type: TodoActionTypes.LOAD_REQUEST,
