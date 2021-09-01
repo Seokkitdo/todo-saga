@@ -25,18 +25,3 @@ export function* todoSaga() {
   yield takeLatest(TodoActionTypes.LOAD_REQUEST, load);
   yield takeLatest(TodoActionTypes.REMOVE_TODO, deleteRequest);
 }
-
-// export function* addTodoSaga() {
-//   yield delay(1000);
-//   yield put(addTodo());
-// }
-
-// export function* removeTodoSaga() {
-//   yield delay(1000);
-//   yield put(removeTodo());
-// }
-
-// export function* todoSaga() {
-//   yield takeEvery(TodoActionTypes.ADD_TODO_ASYNC, addTodoSaga);
-//   yield takeLatest(TodoActionTypes.REMOVE_TODO_ASYNC, removeTodoSaga);
-// }
