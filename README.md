@@ -2,7 +2,7 @@
 
 ## Project Link
 
-[🔗 배포 주소](https://solarconnect-re4ct.netlify.app/)
+[🔗 배포 주소](https://payworktodo.netlify.app/)
 
 ## ✅Basic requirements
 
@@ -34,3 +34,5 @@ $ npm run start
 <br>
 
 ## 🎨Preview
+
+![ezgif com-gif-maker (4)](https://user-images.githubusercontent.com/39605922/131674387-30984423-d1fb-4d54-b5b8-d75e05509289.gif)
