@@ -23,6 +23,11 @@ const todoReducer = (state = initialState, action: ITodoListActionTypes): ITodos
         data: state.data.filter((todo) => todo.id !== action.payload.id),
       };
 
+    case TodoActionTypes.TOGGLE_TODO:
+      return {
+        data: state.data.map((todo) => (todo.id === action.payload.id ? { ...todo, isChecked: !todo.isChecked } : todo)),
+      };
+
     default:
       return state;
   }

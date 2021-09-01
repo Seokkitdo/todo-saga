@@ -15,6 +15,12 @@ export const removeTodo = (id: number) => ({
   },
 });
 
+export const toggleTodo = (id: number) => ({
+  type: TodoActionTypes.TOGGLE_TODO,
+  payload: {
+    id,
+  },
+});
 // export const addTodoAsync = () => ({
 //   type: TodoActionTypes.ADD_TODO_ASYNC,
 // });

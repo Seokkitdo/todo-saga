@@ -5,7 +5,7 @@ import { faCheck, faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { ITodo } from 'types';
-import { removeTodo } from 'store/actions';
+import { removeTodo, toggleTodo } from 'store/actions';
 
 interface ITodoProps {
   todo: ITodo;
@@ -17,11 +17,15 @@ const TodoItem: React.FC<ITodoProps> = ({ todo }) => {
   const removeHandler = () => {
     dispatch(removeTodo(todo.id));
   };
+
+  const toggleHandler = () => {
+    dispatch(toggleTodo(todo.id));
+  };
   return (
-    <TodoItemWrap>
-      <TodoText>{todo.text}</TodoText>
+    <TodoItemWrap isChecked={todo.isChecked}>
+      <TodoText isChecked={todo.isChecked}>{todo.text}</TodoText>
       <TodoButtons>
-        <TodoButton>
+        <TodoButton onClick={toggleHandler}>
           <FontAwesomeIcon icon={faCheck} />
         </TodoButton>
         <TodoButton>
@@ -35,13 +39,11 @@ const TodoItem: React.FC<ITodoProps> = ({ todo }) => {
   );
 };
 
-const complete = styled.div`
-  text-decoration-style: solid;
-  text-decoration-line: line-through;
-  text-decoration-color: #ff6c6c;
-  opacity: 0.6;
-`;
-const TodoItemWrap = styled.article`
+interface ICheck {
+  isChecked: boolean;
+}
+
+const TodoItemWrap = styled.article<ICheck>`
   display: flex;
   justify-content: space-between;
   width: 31.6rem;
@@ -49,11 +51,13 @@ const TodoItemWrap = styled.article`
   padding: 0.8rem;
   border-radius: 5px;
   margin-bottom: 1rem;
+  opacity: ${(props) => (props.isChecked ? '0.6' : '1')};
 `;
 
-const TodoText = styled.p`
+const TodoText = styled.p<ICheck>`
   color: white;
   width: 22rem;
+  text-decoration: ${(props) => (props.isChecked ? 'line-through' : 'none')};
 `;
 
 const TodoButtons = styled.div`
