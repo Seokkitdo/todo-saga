@@ -28,6 +28,15 @@ const todoReducer = (state = initialState, action: ITodoListActionTypes): ITodos
         data: state.data.map((todo) => (todo.id === action.payload.id ? { ...todo, isChecked: !todo.isChecked } : todo)),
       };
 
+    case TodoActionTypes.LOAD_REQUEST:
+      return { ...state };
+
+    case TodoActionTypes.LOAD_SUCCESS:
+      return { data: action.data };
+
+    case TodoActionTypes.LOAD_FAILURE:
+      return { data: [] };
+
     default:
       return state;
   }

@@ -6,7 +6,7 @@ import { loadSuccess, loadFailure } from 'store/actions';
 
 export function* load() {
   try {
-    const { data } = yield call(api.get, 'http://localhost:3000/items');
+    const { data } = yield call(api.get, 'http://localhost:3000/todos');
     yield put(loadSuccess(data));
   } catch (error) {
     yield put(loadFailure());
@@ -15,7 +15,7 @@ export function* load() {
 
 export function* deleteRequest({ payload }: ITodoListActionTypes) {
   try {
-    yield call(api.delete, `http://localhost:3000/items/${payload.id}`);
+    yield call(api.delete, `http://localhost:3000/toods/${payload.id}`);
   } catch (error) {
     console.log('DELETE ERROR');
   }
