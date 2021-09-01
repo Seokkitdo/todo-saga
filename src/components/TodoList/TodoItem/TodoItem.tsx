@@ -28,9 +28,9 @@ const TodoItem: React.FC<ITodoProps> = ({ todo }) => {
         <TodoButton onClick={toggleHandler}>
           <FontAwesomeIcon icon={faCheck} />
         </TodoButton>
-        <TodoButton>
+        {/* <TodoButton>
           <FontAwesomeIcon icon={faEdit} />
-        </TodoButton>
+        </TodoButton> */}
         <TodoButton onClick={removeHandler}>
           <FontAwesomeIcon icon={faTrashAlt} />
         </TodoButton>
